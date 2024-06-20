@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "../container/Login";
 import { Route, Routes } from "react-router-dom";
+import Signup from "../container/Signup";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Routes>
         <Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Route>
       </Routes>
     </React.Suspense>
