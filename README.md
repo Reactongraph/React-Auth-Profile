@@ -1,43 +1,90 @@
-# Getting Started with Create React App
+# React-Auth-Profile
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Project](#running-the-project)
+- [Project Structure](#project-structure)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This project is a React application that provides user authentication and profile management functionalities. Users can sign up, log in, edit their profile (including uploading an image, adding a phone number, updating their email, and changing their password).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- User can Sign up
+- User can Login
+- In Setting User can Add Phone Number , Update Email , Change Password , add Profile Picture
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Redux
+- React Router
+- Material-UI/Styled Components
+- React Hook Form
+- Zod
+- React toastify
 
-### `npm run build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (version 16.0.0 or higher)
+- npm or yarn
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+   ```bash
+   git clone https://github.com/Reactongraph/React-Auth-Profile.git
+   cd React-Auth-Profile
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running the Project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Development Server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To start the development server, run:
+
+```bash
+npm start
+```
+
+## project-structure
+
+React-Auth-Profile/
+├── node_modules/
+├── public/
+│ ├── index.html
+│ └── images
+├── src/
+│ ├── component/
+│ ├── container/
+│ ├── core/
+│ ├── hooks/
+│ ├── redux/
+│ ├── routes/
+│ ├── theme/
+│ ├── utils
+│ ├── index.js
+│ └── App.css
+├── .gitignore
+├── package.json
+├── README.md
+
 
 ## Learn More
 
