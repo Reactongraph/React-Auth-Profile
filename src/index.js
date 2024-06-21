@@ -4,13 +4,13 @@ import "./index.css";
 import App from "./routes";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "@mui/material";
-import theme from "./theme";
+import { ThemeProvider } from "./core/theme-provider";
+// import { ThemeProvider } from "@mui/material";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <App />
     </ThemeProvider>
   </BrowserRouter>
