@@ -1,5 +1,5 @@
 import { Alert, Link, Stack, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../../component/authLayout";
 import {
   CheckInputField,
@@ -15,6 +15,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { registerUserData } from "../../redux/userReducer/action";
 import { useNavigate } from "react-router-dom";
 import { paths } from "../../utils/path";
+import { toast } from "react-toastify";
+
 const defaultValues = {
   fullName: "",
   email: "",
@@ -22,14 +24,10 @@ const defaultValues = {
   terms: false,
 };
 const Signup = () => {
-  const [linkSent, setLinkSent] = useState(false);
-  const [targetEmail, setTargetEmail] = useState("");
   const dispatch = useDispatch();
   const existedUserData = useSelector((state) => state?.user?.userData);
   const navigate = useNavigate();
 
-  console.log(existedUserData, "existedUserData-----");
-  // const [createUser, { data, isLoading }] = useCreateUserMutation();
   const {
     control,
     handleSubmit,
@@ -41,13 +39,12 @@ const Signup = () => {
     const allmail = existedUserData?.map((item) => item?.email?.toLowerCase());
 
     if (allmail?.includes(data?.email?.toLowerCase())) {
-      alert("This email is already taken");
+      toast.error("This email is already taken");
       reset();
     } else {
       dispatch(registerUserData(data));
       navigate("/");
     }
-    // createUser(data);
   };
   return (
     <>

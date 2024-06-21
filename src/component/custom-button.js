@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import SpinnerLoader from "./spinner-loader";
 import { Button } from "@mui/material";

@@ -16,6 +16,7 @@ import Layout from "../../component/authLayout";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUserData } from "../../redux/userReducer/action";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const defaultValues = {
   email: "",
@@ -51,7 +52,7 @@ function SignInForm() {
       );
       navigate("/dashboard");
     } else {
-      alert("Invalid Credentials ");
+      toast.error("Invalid Credentials");
     }
   };
 

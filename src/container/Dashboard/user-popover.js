@@ -7,6 +7,9 @@ import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { PadGrid } from "../../component/styled";
+import { useDispatch, useSelector } from "react-redux";
+import { clearUserProfile } from "../../redux/userReducer/action";
+import { useNavigate } from "react-router-dom";
 // import { paths } from "@/paths";
 // import { useDispatch, useSelector } from "react-redux";
 // import { signOut } from "next-auth/react";
@@ -14,14 +17,12 @@ import { PadGrid } from "../../component/styled";
 // import PadGrid from "@/components/styled/styled";
 
 export function UserPopover({ anchorEl, onClose, open }) {
-  // const { name, email } = useSelector((store) => store.auth);
-  // const dispatch = useDispatch();
-
-  // let name = "test",
-  // var email = "test@gmail.com"
+  const navigate = useNavigate();
+  const userProfile = useSelector((state) => state?.user?.userProfile);
+  const dispatch = useDispatch();
   const handleSignOut = async () => {
-    // dispatch(logOut());
-    // await signOut({ redirect: true, callbackUrl: paths.public.signIn });
+    dispatch(clearUserProfile());
+    navigate("/");
   };
 
   return (
@@ -33,9 +34,9 @@ export function UserPopover({ anchorEl, onClose, open }) {
       slotProps={{ paper: { sx: { width: "240px" } } }}
     >
       <PadGrid padding="16px 20px">
-        <Typography variant="subtitle1">test</Typography>
+        <Typography variant="subtitle1">{userProfile?.fullName}</Typography>
         <Typography color="text.secondary" variant="body2">
-          test@gmail.com
+          {userProfile?.email}
         </Typography>
       </PadGrid>
       <Divider />

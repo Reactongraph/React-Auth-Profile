@@ -1,5 +1,4 @@
 import React from "react";
-
 import ToastContext from "./toastContainer";
 
 export const viewport = {

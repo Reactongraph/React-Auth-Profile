@@ -1,27 +1,21 @@
 import React from "react";
-// import { Link as RouterLink } from "next/link";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-// import { Logo } from "@/components/core/logo";
 import { Avatar, Grid } from "@mui/material";
 import ArticleIcon from "@mui/icons-material/Article";
-// import { useSelector } from "react-redux";
-// import { UserPopover } from "./user-popover";
-// import { usePopover } from "@/hooks/use-popover";
-// import { truncateString } from "@/lib/helper";
 import { paths } from "../../utils/path";
-// import { isNavItemActive } from "@/lib/is-nav-item-active";
 import { Logo } from "../../component/logo";
 import { truncateString } from "../../utils/helper";
 import { usePopover } from "../../hooks/use-popover";
 import { useLocation } from "react-router-dom";
 import { UserPopover } from "./user-popover";
 import { isNavItemActive } from "./is-nav-item-active";
+import { useSelector } from "react-redux";
 
 const SideNavContent = () => {
-  // const { fullName, avatar } = useSelector((store) => store.auth);
+  const userProfile = useSelector((state) => state?.user?.userProfile);
   const pathname = useLocation();
   const userPopover = usePopover();
 
@@ -84,9 +78,9 @@ const SideNavContent = () => {
               // src={avatar ? avatar : undefined}
               ref={userPopover.anchorRef}
             >
-              {/* {fullName[0]} */}
+              {userProfile?.fullName?.[0]}
             </Avatar>
-            {/* <Typography variant="h6">{fullName}</Typography> */}
+            <Typography variant="h6">{userProfile?.fullName}</Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -109,7 +103,7 @@ function renderNavItems({ items = [], pathname }) {
       <NavItem
         key={href}
         id={href || ""}
-        pathname={pathname}
+        pathname={pathname?.pathname}
         title={title}
         href={href}
       />
@@ -133,6 +127,7 @@ function NavItem({ disabled, external, href, matcher, pathname, title }) {
     matcher,
     pathname,
   });
+
 
   return (
     <li>

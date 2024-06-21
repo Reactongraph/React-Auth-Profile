@@ -15,10 +15,10 @@ export function Logo({
   if (emblem) {
     url =
       color === "light"
-        ? "/assets/logo-emblem.png"
-        : "/assets/logo-emblem--dark.png";
+        ? "/images/logo-emblem.png"
+        : "/images/logo-emblem--dark.png";
   } else {
-    url = color === "light" ? "/assets/logo.png" : "/images/logo--dark.png";
+    url = color === "light" ? "/images/logo.png" : "/images/logo--dark.png";
   }
 
   return (

@@ -5,19 +5,13 @@ import Stack from "@mui/material/Stack";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MobileNav } from "./MobileNav";
 import { Grid, Typography } from "@mui/material";
-// import { useSelector } from "react-redux";
-// import Link from "next/link";
-// import { paths } from "@/paths";
-// import Logo from "@/components/core/logo";
-// import { truncateString } from "@/lib/helper";
 import { paths } from "../../utils/path";
 import { Logo } from "../../component/logo";
 import { truncateString } from "../../utils/helper";
+import { useSelector } from "react-redux";
 
 export function MainNav() {
-  // const { fullName } = useSelector((store) => store.auth);
-
-  const fullName = "My Name is Sajjan";
+  const userProfile = useSelector((state) => state?.user?.userProfile);
   const [openNav, setOpenNav] = useState(false);
 
   return (
@@ -61,7 +55,7 @@ export function MainNav() {
                 <Logo emblem color="dark" />
               </Box>
               <Typography variant="h6">
-                {truncateString(fullName, 20)}
+                {truncateString(userProfile?.fullName, 20)}
               </Typography>
             </Grid>
           </Stack>

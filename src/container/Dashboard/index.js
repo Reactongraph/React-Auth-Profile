@@ -5,9 +5,6 @@ import GlobalStyles from "@mui/material/GlobalStyles";
 import { MainNav } from "./main-nav";
 import { SideNav } from "./side-nav";
 
-// import { MainNav } from "@/components/dashboard/layout/main-nav";
-// import { SideNav } from "@/components/dashboard/layout/side-nav";
-
 export default function Layout({ children }) {
   return (
     <>

@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./core/theme-provider";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +16,7 @@ root.render(
     <Provider store={store}>
       <ThemeProvider>
         <App />
+        <ToastContainer />
       </ThemeProvider>
     </Provider>
   </BrowserRouter>
