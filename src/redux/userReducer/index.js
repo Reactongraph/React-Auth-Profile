@@ -1,8 +1,8 @@
 import {
-  SET_USER_PROFILE,
   UPDATE_USER_PROFILE,
   CLEAR_USER_PROFILE,
   REGISTER_USER_PROFILE,
+  LOGIN_USER_PROFILE,
 } from "./types";
 
 const initialState = {
@@ -12,11 +12,6 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_USER_PROFILE:
-      return {
-        ...state,
-        userProfile: action.payload,
-      };
     case UPDATE_USER_PROFILE:
       return {
         ...state,
@@ -34,6 +29,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         userData: [...state?.userData, action.payload],
+      };
+    case LOGIN_USER_PROFILE:
+      return {
+        ...state,
+        userProfile: action.payload,
       };
     default:
       return state;

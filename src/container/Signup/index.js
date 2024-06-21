@@ -13,6 +13,8 @@ import { signUpSchema } from "../../utils/validationSchema";
 import CustomButton from "../../component/custom-button";
 import { useSelector, useDispatch } from "react-redux";
 import { registerUserData } from "../../redux/userReducer/action";
+import { useNavigate } from "react-router-dom";
+import { paths } from "../../utils/path";
 const defaultValues = {
   fullName: "",
   email: "",
@@ -24,6 +26,7 @@ const Signup = () => {
   const [targetEmail, setTargetEmail] = useState("");
   const dispatch = useDispatch();
   const existedUserData = useSelector((state) => state?.user?.userData);
+  const navigate = useNavigate();
 
   console.log(existedUserData, "existedUserData-----");
   // const [createUser, { data, isLoading }] = useCreateUserMutation();
@@ -31,14 +34,18 @@ const Signup = () => {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ defaultValues, resolver: zodResolver(signUpSchema) });
 
   const onSubmit = async (data) => {
     const allmail = existedUserData?.map((item) => item?.email?.toLowerCase());
+
     if (allmail?.includes(data?.email?.toLowerCase())) {
       alert("This email is already taken");
+      reset();
     } else {
       dispatch(registerUserData(data));
+      navigate("/");
     }
     // createUser(data);
   };
@@ -55,11 +62,11 @@ const Signup = () => {
             Already have an account?{" "}
             <Link
               // component={RouterLink}
-              // href={paths.public.signIn}
+              href={paths.public.signIn}
               underline="hover"
               variant="subtitle2"
             >
-              Sign in
+              Log in
             </Link>
           </Typography>
         </Stack>

@@ -13,6 +13,9 @@ import {
 } from "../../component/inputFields";
 import { signInSchema } from "../../utils/validationSchema";
 import Layout from "../../component/authLayout";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUserData } from "../../redux/userReducer/action";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
   email: "",
@@ -26,8 +29,30 @@ function SignInForm() {
     formState: { errors },
   } = useForm({ defaultValues, resolver: zodResolver(signInSchema) });
 
+  const dispatch = useDispatch();
+  const existedUserData = useSelector((state) => state?.user?.userData);
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     //call reducer
+    const emailMatchingIndex = existedUserData?.findIndex(
+      (item) => item?.email?.toLowerCase() === data?.email?.toLowerCase()
+    );
+    const { password, email } = existedUserData?.[emailMatchingIndex] || "";
+    if (
+      email?.toLowerCase() === data?.email?.toLowerCase() &&
+      password?.trim() === data?.password?.trim()
+    ) {
+      dispatch(
+        loginUserData({
+          ...existedUserData?.[emailMatchingIndex],
+          emailMatchingIndex,
+        })
+      );
+      navigate("/dashboard");
+    } else {
+      alert("Invalid Credentials ");
+    }
   };
 
   return (
