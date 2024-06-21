@@ -1,7 +1,7 @@
 export const paths = {
   public: {
-    signIn: "/login",
-    signUp: "/register",
+    signIn: "/",
+    signUp: "/signup",
     emailVerify: "/email-verified",
     forgetPassword: "/forgot-password",
     resetPassword: "/reset-password",

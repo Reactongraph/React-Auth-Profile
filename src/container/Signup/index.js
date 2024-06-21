@@ -11,7 +11,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema } from "../../utils/validationSchema";
 import CustomButton from "../../component/custom-button";
-
+import { useSelector, useDispatch } from "react-redux";
+import { registerUserData } from "../../redux/userReducer/action";
 const defaultValues = {
   fullName: "",
   email: "",
@@ -21,6 +22,10 @@ const defaultValues = {
 const Signup = () => {
   const [linkSent, setLinkSent] = useState(false);
   const [targetEmail, setTargetEmail] = useState("");
+  const dispatch = useDispatch();
+  const existedUserData = useSelector((state) => state?.user?.userData);
+
+  console.log(existedUserData, "existedUserData-----");
   // const [createUser, { data, isLoading }] = useCreateUserMutation();
   const {
     control,
@@ -28,22 +33,25 @@ const Signup = () => {
     formState: { errors },
   } = useForm({ defaultValues, resolver: zodResolver(signUpSchema) });
 
-  const onSubmit = (async) => {
+  const onSubmit = async (data) => {
+    const allmail = existedUserData?.map((item) => item?.email?.toLowerCase());
+    if (allmail?.includes(data?.email?.toLowerCase())) {
+      alert("This email is already taken");
+    } else {
+      dispatch(registerUserData(data));
+    }
     // createUser(data);
   };
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setTargetEmail(data.email);
-  //     setLinkSent(true);
-  //   }
-  // }, [data]);
   return (
     <>
       <Layout>
         <Stack spacing={1}>
           <Typography variant="h4">Sign up</Typography>
-          <Typography color="text.secondary" variant="body2">
+          <Typography
+            color="text.secondary"
+            variant="body2"
+            style={{ marginBottom: "8px" }}
+          >
             Already have an account?{" "}
             <Link
               // component={RouterLink}

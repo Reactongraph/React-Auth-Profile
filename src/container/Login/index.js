@@ -34,7 +34,7 @@ function SignInForm() {
     <Layout>
       <Stack spacing={4}>
         <Stack spacing={1}>
-          <Typography variant="h4">Sign in</Typography>
+          <Typography variant="h4">Login in</Typography>
           <Typography color="text.secondary" variant="body2">
             Don&apos;t have an account?{" "}
             <Link

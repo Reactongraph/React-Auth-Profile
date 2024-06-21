@@ -1,14 +1,10 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { createRootReducer } from "./rootReducers";
-import { apiSlice } from "./apiSlice";
+import { createStore, combineReducers } from "redux";
+import userReducer from "./userReducer";
 
-const customizedMiddleware = getDefaultMiddleware({
-  serializableCheck: false,
-}).concat(apiSlice.middleware);
-
-export const store = configureStore({
-  reducer: createRootReducer(),
-  middleware: customizedMiddleware,
+const rootReducer = combineReducers({
+  user: userReducer,
 });
 
-export const { dispatch, getState } = store;
+const store = createStore(rootReducer);
+
+export default store;
