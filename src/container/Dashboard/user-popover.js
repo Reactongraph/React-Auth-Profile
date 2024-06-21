@@ -10,11 +10,6 @@ import { PadGrid } from "../../component/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUserProfile } from "../../redux/userReducer/action";
 import { useNavigate } from "react-router-dom";
-// import { paths } from "@/paths";
-// import { useDispatch, useSelector } from "react-redux";
-// import { signOut } from "next-auth/react";
-// import { logOut } from "@/store/Features/auth/authSlice";
-// import PadGrid from "@/components/styled/styled";
 
 export function UserPopover({ anchorEl, onClose, open }) {
   const navigate = useNavigate();

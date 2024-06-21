@@ -1,5 +1,9 @@
+import React from "react";
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Alert, Link, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Layout from "../../component/authLayout";
 import {
   CheckInputField,
@@ -7,15 +11,12 @@ import {
   PasswordInputField,
   TextInputField,
 } from "../../component/inputFields";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema } from "../../utils/validationSchema";
 import CustomButton from "../../component/custom-button";
-import { useSelector, useDispatch } from "react-redux";
 import { registerUserData } from "../../redux/userReducer/action";
-import { useNavigate } from "react-router-dom";
+
 import { paths } from "../../utils/path";
-import { toast } from "react-toastify";
 
 const defaultValues = {
   fullName: "",
@@ -58,7 +59,6 @@ const Signup = () => {
           >
             Already have an account?{" "}
             <Link
-              // component={RouterLink}
               href={paths.public.signIn}
               underline="hover"
               variant="subtitle2"
@@ -93,13 +93,7 @@ const Signup = () => {
               label={
                 <>
                   I have read the{" "}
-                  <Link
-                    // component={RouterLink}
-                    // href={paths.common.tnc}
-                    target="_blank"
-                  >
-                    terms and conditions
-                  </Link>
+                  <Link target="_blank">terms and conditions</Link>
                 </>
               }
               errors={errors}
@@ -107,12 +101,7 @@ const Signup = () => {
             {errors.root ? (
               <Alert color="error">{errors.root.message}</Alert>
             ) : null}
-            <CustomButton
-              // loading={isLoading}
-              // disabled={isLoading}
-              type="submit"
-              variant="contained"
-            >
+            <CustomButton type="submit" variant="contained">
               Sign up
             </CustomButton>
           </Stack>
