@@ -86,21 +86,11 @@ function SignInForm() {
               label="Password"
               errors={errors}
             />
-            <div>
-              <Link
-                href={paths.public.forgetPassword}
-                underline="hover"
-                variant="subtitle2"
-              >
-                Forget password
-              </Link>
-            </div>
+            
             {errors.root ? (
               <Alert color="error">{errors.root.message}</Alert>
             ) : null}
             <CustomButton
-              // loading={true}
-              // disabled={true}
               type="submit"
               variant="contained"
             >

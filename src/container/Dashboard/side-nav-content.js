@@ -9,7 +9,7 @@ import { paths } from "../../utils/path";
 import { Logo } from "../../component/logo";
 import { truncateString } from "../../utils/helper";
 import { usePopover } from "../../hooks/use-popover";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserPopover } from "./user-popover";
 import { isNavItemActive } from "./is-nav-item-active";
 import { useSelector } from "react-redux";
@@ -31,7 +31,6 @@ const SideNavContent = () => {
     >
       <Grid sx={{ p: 1, display: "flex", alignItems: "center", gap: "10px" }}>
         <Box
-          // component={RouterLink}
           href={paths.private.dashboard}
           sx={{ display: "block", width: "fit-content" }}
         >
@@ -75,7 +74,7 @@ const SideNavContent = () => {
             }}
           >
             <Avatar
-              // src={avatar ? avatar : undefined}
+              src={userProfile?.avatar ? userProfile.avatar : undefined}
               ref={userPopover.anchorRef}
             >
               {userProfile?.fullName?.[0]}
@@ -120,6 +119,7 @@ function renderNavItems({ items = [], pathname }) {
 }
 
 function NavItem({ disabled, external, href, matcher, pathname, title }) {
+  const navigate = useNavigate();
   const active = isNavItemActive({
     disabled,
     external,
@@ -132,9 +132,9 @@ function NavItem({ disabled, external, href, matcher, pathname, title }) {
   return (
     <li>
       <Box
+        onClick={() => navigate(href)}
         {...(href
           ? {
-              // component: external ? "a" : RouterLink,
               href,
               target: external ? "_blank" : undefined,
               rel: external ? "noreferrer" : undefined,

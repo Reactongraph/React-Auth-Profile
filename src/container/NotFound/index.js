@@ -1,6 +1,7 @@
 import React from "react";
 import { CCBox, CStack, CenterTextTypography } from "./Styled";
 import { Box, Button } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const NotFound = () => {
   return (
@@ -22,9 +23,8 @@ const NotFound = () => {
           Whichever it is, try using the navigation
         </CenterTextTypography>
         <Button
-          // component={RouterLink}
-          // href={paths.common.home}
-          // startIcon={<ArrowBackIcon />}
+          href={"/"}
+          startIcon={<ArrowBackIcon />}
           variant="contained"
         >
           Go back to home

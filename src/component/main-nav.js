@@ -3,12 +3,13 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import MenuIcon from "@mui/icons-material/Menu";
-import { MobileNav } from "./MobileNav";
+import { MobileNav } from "../container/Dashboard/MobileNav";
 import { Grid, Typography } from "@mui/material";
-import { paths } from "../../utils/path";
-import { Logo } from "../../component/logo";
-import { truncateString } from "../../utils/helper";
+
 import { useSelector } from "react-redux";
+import { paths } from "../utils/path";
+import { Logo } from "./logo";
+import { truncateString } from "../utils/helper";
 
 export function MainNav() {
   const userProfile = useSelector((state) => state?.user?.userProfile);
@@ -48,7 +49,6 @@ export function MainNav() {
               sx={{ p: 1, display: "flex", alignItems: "center", gap: "10px" }}
             >
               <Box
-                // component={Link}
                 href={paths.private.dashboard}
                 sx={{ display: "block", width: "fit-content" }}
               >

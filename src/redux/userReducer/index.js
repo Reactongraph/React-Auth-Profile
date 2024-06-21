@@ -13,12 +13,20 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_USER_PROFILE:
-      return {
+    return {
         ...state,
         userProfile: {
           ...state.userProfile,
           ...action.payload,
         },
+        userData: (() => {
+          const { emailMatchingIndex } = state?.userProfile;
+          state.userData[emailMatchingIndex] = {
+            ...state.userProfile,
+            ...action.payload,
+          };
+          return [...state.userData];
+        })(),
       };
     case CLEAR_USER_PROFILE:
       return {

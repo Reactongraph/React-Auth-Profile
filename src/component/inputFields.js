@@ -173,7 +173,7 @@ export const AvatarInputField = ({
         }
       >
         <CustomAvatar src={imageSrc} alt={name} width={100} height={100}>
-          {!imageSrc && name.charAt(0)}
+          {!imageSrc && name?.charAt(0)}
         </CustomAvatar>
       </Badge>
     </>

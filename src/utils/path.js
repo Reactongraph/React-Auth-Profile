@@ -11,7 +11,7 @@ export const paths = {
     note: "/dashboard/note",
     emailVerified: "/email-verified",
     resetPassword: "/reset-password",
-    setting: "/dashboard/settings",
+    setting: "/setting",
     logout: "/logout",
   },
   common: {
