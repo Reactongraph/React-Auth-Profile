@@ -18,7 +18,7 @@ export function Logo({
         ? "/assets/logo-emblem.png"
         : "/assets/logo-emblem--dark.png";
   } else {
-    url = color === "light" ? "/assets/logo.png" : "/assets/logo--dark.png";
+    url = color === "light" ? "/assets/logo.png" : "/images/logo--dark.png";
   }
 
   return (
